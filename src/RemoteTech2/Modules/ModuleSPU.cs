@@ -49,7 +49,9 @@ namespace RemoteTech
         public override String GetInfo()
         {
             if (!ShowEditor_Type) return String.Empty;
-            return IsRTCommandStation ? "Remote Command capable (6+ crew)" : "Remote Control capable";
+            string CommandMessage = "Remote Command capable (#+ crew)";
+            CommandMessage = CommandMessage.Replace("#", RTSettings.Instance.MinCrewNumberForCommand.ToString());
+            return IsRTCommandStation ? CommandMessage : "Remote Control capable";
         }
 
         public override void OnStart(StartState state)
