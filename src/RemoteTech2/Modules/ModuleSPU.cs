@@ -16,7 +16,7 @@ namespace RemoteTech
         public CelestialBody Body { get { return vessel.mainBody; } }
         public bool Visible { get { return MapViewFiltering.CheckAgainstFilter(vessel); } }
         public bool Powered { get { return IsRTPowered; } }
-        public bool IsCommandStation { get { return IsRTPowered && IsRTCommandStation && vessel.GetVesselCrew().Count >= 6; } }
+        public bool IsCommandStation { get { return IsRTPowered && IsRTCommandStation && vessel.GetVesselCrew().Count >= RTSettings.Instance.MinCrewNumberForCommand; } }
         public FlightComputer FlightComputer { get; private set; }
         public Vessel Vessel { get { return vessel; } }
         public bool IsMaster { get { return Satellite != null && Satellite.SignalProcessor == (ISignalProcessor) this; } }
